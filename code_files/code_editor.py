@@ -1,4 +1,4 @@
-def code_editor():
+def terminal_editor():
     print("Enter the code \n")
     line=""
     code=[]
@@ -9,3 +9,6 @@ def code_editor():
         code.append(line)
     test_code="\n".join(code)
     return test_code
+
+def pygame_editor(screen,clock):
+    pass
