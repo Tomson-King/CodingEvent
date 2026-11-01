@@ -3,6 +3,7 @@ import pygame
 import os
 import json
 
+
 def code_init():
     with open("code_files/codes.json", "w") as code_file:
         code={"code_1":"","code_2":"","code_3":"","code_4":"","code_5":"","code_6":"","test":""}
@@ -23,6 +24,7 @@ def test():
 
 
 def pygame_display():
+    
     pygame.init()
     screen = pygame.display.set_mode((1280, 720))
     clock = pygame.time.Clock()
@@ -43,16 +45,27 @@ def pygame_display():
                     key=(pygame.K_BACKSPACE)
                 elif event.key==pygame.K_RETURN:
                     key=(pygame.K_RETURN)
+                elif event.key==pygame.K_UP:
+                    key=pygame.K_UP
+                elif event.key==pygame.K_DOWN:
+                    key=pygame.K_DOWN
+                elif event.key==pygame.K_RIGHT:
+                    key=pygame.K_RIGHT
+                elif event.key==pygame.K_LEFT:
+                    key=pygame.K_LEFT
                 else:
                     key = event.unicode
         code=pygame_editor(screen,key,file)
         key=None
         pygame.display.flip()
         
-        if (code[-1]=="run"):
-            running==True
+
     clock.tick(60)
-    code.pop()
+    with open("code_files/codes.json","r")as f:
+        code_files=json.load(f)
+    current=code_files["codes"][file]["current"]
+    code[current]=code[current][:-1]
+
     test_code="\n".join(code)         
     pygame.quit()
     return test_code

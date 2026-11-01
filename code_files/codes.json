@@ -2,52 +2,60 @@
     "codes": {
         "test": {
             "code": [
-                "p"
+                "hi=\"hello\"",
+                "print(hi)_"
             ],
             "start": 0,
-            "current": 0
+            "current": 1,
+            "cursor_pos": 0
         },
         "code_1": {
             "code": [
                 ""
             ],
             "start": 0,
-            "current": 0
+            "current": 0,
+            "cursor_pos": 0
         },
         "code_2": {
             "code": [
                 ""
             ],
             "start": 0,
-            "current": 0
+            "current": 0,
+            "cursor_pos": 0
         },
         "code_3": {
             "code": [
                 ""
             ],
             "start": 0,
-            "current": 0
+            "current": 0,
+            "cursor_pos": 0
         },
         "code_4": {
             "code": [
                 ""
             ],
             "start": 0,
-            "current": 0
+            "current": 0,
+            "cursor_pos": 0
         },
         "code_5": {
             "code": [
                 ""
             ],
             "start": 0,
-            "current": 0
+            "current": 0,
+            "cursor_pos": 0
         },
         "code_6": {
             "code": [
                 ""
             ],
             "start": 0,
-            "current": 0
+            "current": 0,
+            "cursor_pos": 0
         }
     }
 }
