@@ -1,1 +1,53 @@
-{"code_1": "", "code_2": "", "code_3": "", "code_4": "", "code_5": "", "code_6": "", "test": ""}
+{
+    "codes": {
+        "test": {
+            "code": [
+                "p"
+            ],
+            "start": 0,
+            "current": 0
+        },
+        "code_1": {
+            "code": [
+                ""
+            ],
+            "start": 0,
+            "current": 0
+        },
+        "code_2": {
+            "code": [
+                ""
+            ],
+            "start": 0,
+            "current": 0
+        },
+        "code_3": {
+            "code": [
+                ""
+            ],
+            "start": 0,
+            "current": 0
+        },
+        "code_4": {
+            "code": [
+                ""
+            ],
+            "start": 0,
+            "current": 0
+        },
+        "code_5": {
+            "code": [
+                ""
+            ],
+            "start": 0,
+            "current": 0
+        },
+        "code_6": {
+            "code": [
+                ""
+            ],
+            "start": 0,
+            "current": 0
+        }
+    }
+}

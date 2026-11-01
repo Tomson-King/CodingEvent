@@ -26,16 +26,41 @@ def pygame_display():
     pygame.init()
     screen = pygame.display.set_mode((1280, 720))
     clock = pygame.time.Clock()
+    key=None
+    
+    file="test"
  
     running=True
  
 
     while(running):
+        screen.fill((0,0,0))
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
-                running=False 
-                
+                running=False
+            if event.type==pygame.KEYDOWN:
+                if event.key==pygame.K_BACKSPACE:
+                    key=(pygame.K_BACKSPACE)
+                elif event.key==pygame.K_RETURN:
+                    key=(pygame.K_RETURN)
+                else:
+                    key = event.unicode
+        code=pygame_editor(screen,key,file)
+        key=None
+        pygame.display.flip()
+        
+        if (code[-1]=="run"):
+            running==True
+    clock.tick(60)
+    code.pop()
+    test_code="\n".join(code)         
     pygame.quit()
+    return test_code
 
 if __name__ == "__main__":
-    test()
+    test_code=pygame_display()
+    file="test"
+    lang=int(getch("Enter 1 for python 2 for c"))
+    clear_screen()
+    code_runner(file,lang,test_code)
+    clear_screen()
