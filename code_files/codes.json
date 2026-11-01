@@ -3,11 +3,11 @@
         "test": {
             "code": [
                 "hi=\"hello\"",
-                "print(hi)_"
+                "print"
             ],
             "start": 0,
             "current": 1,
-            "cursor_pos": 0
+            "cursor_pos": 5
         },
         "code_1": {
             "code": [
