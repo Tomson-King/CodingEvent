@@ -16,7 +16,7 @@ def terminal_editor():
 
 
 def pygame_editor(screen, key, file,lang="py",selected=6):
-    with open("code_files/codes.json", "r") as f:
+    with open("IDE/codes.json", "r") as f:
         code_files = json.load(f)
 
     file_data = code_files["codes"].setdefault(file, {
@@ -370,7 +370,7 @@ def pygame_editor(screen, key, file,lang="py",selected=6):
         file_data["current"] = current
         file_data["cursor_pos"] = cursor_pos
         file_data["start"] = start
-        with open("code_files/codes.json", "w") as f:
+        with open("IDE/codes.json", "w") as f:
             json.dump(code_files, f, indent=4)
     result=(code, action)
     return  result , lang , selected

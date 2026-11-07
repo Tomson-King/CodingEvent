@@ -1,11 +1,11 @@
-from code_files import *
+from IDE import *
 import pygame
 import os
 import json
 
 
 def code_init():
-    with open("code_files/codes.json", "w") as code_file:
+    with open("IDE/codes.json", "w") as code_file:
         files = ["code_1", "code_2", "code_3", "code_4", "code_5", "code_6", "test"]
         code = {"codes": {f: {"Question": [""],"lang":"py","code": [""], "start": 0, "current": 0, "cursor_pos": 0} for f in files}}
         json.dump(code, code_file, indent=4)
@@ -86,7 +86,7 @@ def pygame_display():
         pygame.display.flip()
         clock.tick(60)
 
-    with open("code_files/codes.json", "r") as f:
+    with open("IDE/codes.json", "r") as f:
         code_files = json.load(f)
     code = code_files["codes"][file]["code"]
 
