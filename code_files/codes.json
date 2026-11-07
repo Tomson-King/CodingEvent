@@ -2,7 +2,7 @@
     "codes": {
         "code_1": {
             "Question": [
-                "question"
+                ""
             ],
             "lang": "py",
             "code": [
@@ -16,7 +16,7 @@
             "Question": [
                 ""
             ],
-            "lang": "c",
+            "lang": "py",
             "code": [
                 ""
             ],
@@ -74,7 +74,7 @@
         },
         "test": {
             "Question": [
-                ""
+                "Create a code for building a pc"
             ],
             "lang": "py",
             "code": [

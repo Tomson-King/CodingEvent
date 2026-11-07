@@ -71,9 +71,9 @@ def pygame_display():
                 else:
                     if event.unicode and event.unicode.isprintable():
                         key = event.unicode
-        selected=display_questions(screen,key,selected)
+        
         file=files[selected]
-        result ,lang= pygame_editor(screen, key, file,lang)
+        result ,lang ,selected= pygame_editor(screen, key, file,lang,selected)
         if isinstance(result, tuple):
             code, action = result
         else:
@@ -98,7 +98,6 @@ def pygame_display():
 
 
 if __name__ == "__main__":
-    code_init()
     action=""
 
     while(action!="quit"):
