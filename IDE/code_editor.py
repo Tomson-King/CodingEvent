@@ -15,7 +15,7 @@ def terminal_editor():
     return test_code
 
 
-def pygame_editor(screen, key, file,lang="py",selected=6):
+def pygame_editor(screen, key, file,lang="py",selected=0):
     with open("IDE/codes.json", "r") as f:
         code_files = json.load(f)
 
@@ -44,7 +44,7 @@ def pygame_editor(screen, key, file,lang="py",selected=6):
     cursor_pos = max(0, min(cursor_pos, len(code[current])))
 
     font_type = None
-    font_size = 20
+    font_size = 32
     Q_font_size = 25
     font_colour = (255, 255, 255)
     text = pygame.font.Font(font_type, font_size)
@@ -59,15 +59,16 @@ def pygame_editor(screen, key, file,lang="py",selected=6):
 
     # Run button dimensions & hit-box
     btn_w, btn_h = 115, 36
-    question_rect= pygame.Rect(top_offset+5,screen.get_height()-bottom_offset+5,1000-top_offset-10,screen.get_height()-(screen.get_height()-bottom_offset+10))
+    question_rect= pygame.Rect(top_offset+5,screen.get_height()-bottom_offset+5,screen.get_width()-140-20-top_offset-10,screen.get_height()-(screen.get_height()-bottom_offset+10))
     btn_rect = pygame.Rect(screen.get_width() - btn_w - 25, 10, btn_w, btn_h)
-    btn1_rect = pygame.Rect(1000, question_rect.y, 140, 40)#py button
-    btn2_rect = pygame.Rect(1000, question_rect.bottom - 40, 140, 40)#c button
+    btn1_rect = pygame.Rect(screen.get_width()-140-20, question_rect.y, 140, 40)#py button
+    btn2_rect = pygame.Rect(screen.get_width()-140-20, question_rect.bottom - 40, 140, 40)#c button
 
     Qbtn_w, Qbtn_h = 50, 36
     button_placement=[10,60]
+    no_Q=6
     Q_btn =[]
-    for i in range(7):
+    for i in range(no_Q):
         Q_btn.append( pygame.Rect(button_placement[0],button_placement[1]+(i*(2*Qbtn_h)), Qbtn_w, Qbtn_h))
 
    
@@ -87,7 +88,7 @@ def pygame_editor(screen, key, file,lang="py",selected=6):
         if isinstance(key, tuple) and len(key) == 2 and key[0] == "CLICK":
             mouse_x, mouse_y = key[1]
        
-            for i in range(7):
+            for i in range(no_Q):
                 if Q_btn[i].collidepoint(mouse_x, mouse_y):
                     selected=i
 
@@ -208,7 +209,7 @@ def pygame_editor(screen, key, file,lang="py",selected=6):
     if is_btn2_hover:
         hover = True
     is_Qbtn_hover=[False,False,False,False,False,False,False]
-    for i in range(7):
+    for i in range(no_Q):
         if Q_btn[i].collidepoint(mouse_pos):
             is_Qbtn_hover[i] = Q_btn[i].collidepoint(mouse_pos)
         if is_Qbtn_hover[i]:
@@ -333,7 +334,7 @@ def pygame_editor(screen, key, file,lang="py",selected=6):
     Qbtn_color =[]    
     Qborder_color = []
     Qoffset_y = []
-    for i in range(7):
+    for i in range(no_Q):
         if is_Qbtn_hover[i]:
 
             Qbtn_color.append((46, 215, 110))    # Bright hover green
@@ -347,20 +348,17 @@ def pygame_editor(screen, key, file,lang="py",selected=6):
 
     Qbtn_font = pygame.font.Font(None, 22)
     Qbtn_text_surf=[]
-    for i in range(7):
-        if(i==6):
-            Qbtn_text_surf.append(Qbtn_font.render(f"Test", True, (255, 255, 255)))
-        else:
-            Qbtn_text_surf.append(Qbtn_font.render(f"Q{i+1}", True, (255, 255, 255)))
+    for i in range(no_Q):
+        Qbtn_text_surf.append(Qbtn_font.render(f"Q{i+1}", True, (255, 255, 255)))
 
 
     draw_btn_rect=[]        
-    for i in range(7):
+    for i in range(no_Q):
         draw_btn_rect.append(pygame.Rect(Q_btn[i].x, Q_btn[i].y + Qoffset_y[i], Q_btn[i].width, Q_btn[i].height))
         pygame.draw.rect(screen, Qbtn_color[i], draw_btn_rect[i], border_radius=8)
         pygame.draw.rect(screen, Qborder_color[i], draw_btn_rect[i], width=1, border_radius=8)
     
-    for i in range(7):
+    for i in range(no_Q):
         screen.blit(Qbtn_text_surf[i], (10 + 8, draw_btn_rect[i].centery - Qbtn_text_surf[i].get_height() // 2))
 
     # Save state if modified

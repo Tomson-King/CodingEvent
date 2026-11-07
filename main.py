@@ -6,7 +6,7 @@ import json
 
 def code_init():
     with open("IDE/codes.json", "w") as code_file:
-        files = ["code_1", "code_2", "code_3", "code_4", "code_5", "code_6", "test"]
+        files = ["code_1", "code_2", "code_3", "code_4", "code_5", "code_6"]
         code = {"codes": {f: {"Question": [""],"lang":"py","code": [""], "start": 0, "current": 0, "cursor_pos": 0} for f in files}}
         json.dump(code, code_file, indent=4)
 
@@ -25,7 +25,7 @@ def pygame_display():
     lang="py"
     pygame.init()
     pygame.key.set_repeat(400, 40)
-    screen = pygame.display.set_mode((1280, 720))
+    screen = pygame.display.set_mode((0,0),pygame.FULLSCREEN)
 
     pygame.display.set_caption(f"Code Editor")
     clock = pygame.time.Clock()
@@ -33,8 +33,8 @@ def pygame_display():
     key = None
 
     running = True
-    selected=6
-    files = ["code_1", "code_2", "code_3", "code_4", "code_5", "code_6", "test"]
+    selected=0
+    files = ["code_1", "code_2", "code_3", "code_4", "code_5", "code_6"]
     while running:
         screen.fill((18, 18, 20))
         for event in pygame.event.get():
@@ -48,6 +48,8 @@ def pygame_display():
                     key = "RUN"
                 elif event.key == pygame.K_RETURN and (event.mod & pygame.KMOD_CTRL):
                     key = "RUN"
+                elif event.key == pygame.K_ESCAPE:
+                    running = False
                 elif event.key == pygame.K_BACKSPACE:
                     key = pygame.K_BACKSPACE
                 elif event.key == pygame.K_DELETE:
@@ -98,6 +100,7 @@ def pygame_display():
 
 
 if __name__ == "__main__":
+    
     action=""
 
     while(action!="quit"):

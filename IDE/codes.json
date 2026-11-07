@@ -64,19 +64,7 @@
             "Question": [
                 ""
             ],
-            "lang": "py",
-            "code": [
-                ""
-            ],
-            "start": 0,
-            "current": 0,
-            "cursor_pos": 0
-        },
-        "test": {
-            "Question": [
-                "Create a code for building a pc"
-            ],
-            "lang": "py",
+            "lang": "c",
             "code": [
                 ""
             ],
